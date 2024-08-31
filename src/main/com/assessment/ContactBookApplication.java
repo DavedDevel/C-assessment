@@ -1,6 +1,6 @@
 package com.assessment;
 
-class AssessmentTemplate {
+class ContactBookApplication {
 
     public static void main(String... args){
         System.out.println("Ready!");
