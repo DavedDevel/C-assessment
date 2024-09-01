@@ -9,6 +9,7 @@ import java.util.List;
  * @return list of contact book.
  */
 public interface ContactBookResource {
+
     List<Contact> getContactBookResource();
 
 }
