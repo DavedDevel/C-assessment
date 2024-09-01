@@ -1,10 +1,9 @@
 package com.assessment.logic;
 
 import com.assessment.model.Accuracy;
-import com.assessment.model.Contact;
 import org.apache.commons.lang3.tuple.Triple;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,8 +14,7 @@ public class ContactBookManagement {
 
     private ContactBookResource contactBookResource;
     private AccuracyStrategy accuracyStrategy;
-    private List<Contact> contactList = Collections.emptyList();
-    private List<Triple<String,String, Accuracy>> output;
+    private List<Triple<String,String, Accuracy>> output = new ArrayList<>();
 
 
     public ContactBookManagement(ContactBookResource contactBookResource, AccuracyStrategy accuracyStrategy){
@@ -30,7 +28,7 @@ public class ContactBookManagement {
     public List<Triple<String, String, Accuracy>> findPotentialDuplication() {
         var contactBookList = contactBookResource.getContactBookResource();
         for (int i= 0; i < contactBookList.size(); i++) {
-            for (int j= i; j < contactBookList.size(); j++) {
+            for (int j= i+1; j < contactBookList.size(); j++) {
                 var a = contactBookList.get(i);
                 var b = contactBookList.get(j);
                 if(a.equals(b)) {
