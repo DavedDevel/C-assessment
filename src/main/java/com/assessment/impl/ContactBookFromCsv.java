@@ -22,9 +22,10 @@ public class ContactBookFromCsv implements ContactBookResource {
      */
     public List<Contact> getContactBookResource() {
 
+        String basePath = this.getClass().getClassLoader().getResource("").getPath();
         String value;
         Properties props = new Properties();
-        try (FileInputStream fis = new FileInputStream("application.properties")) {
+        try (FileInputStream fis = new FileInputStream(basePath+"application.properties")) {
             props.load(fis);
             value = props.getProperty("contact.book.mgmt.resource");
         } catch (IOException e) {
@@ -32,8 +33,9 @@ public class ContactBookFromCsv implements ContactBookResource {
             return Collections.emptyList();
         }
 
-        try (Stream<String> lines = Files.lines(Paths.get(value))) {
+        try (Stream<String> lines = Files.lines(Paths.get(basePath + value))) {
             var contactBook = lines
+                    .skip(1)
                     .map(line-> Normalizer.normalize(line, Normalizer.Form.NFKD))
                     .map(String::toLowerCase)
                     .map(Contact::build)

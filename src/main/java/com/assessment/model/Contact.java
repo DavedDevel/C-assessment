@@ -13,7 +13,7 @@ public record Contact(
 
     public static Contact build(String line){
         var args = line.split(",");
-        return new Contact(args[0], args[1], args[2], args[3], args[4], args[5]);
+        return new Contact(args[0], args.length>1?args[1]:"", args.length>2?args[2]:"", args.length>3?args[3]:"", args.length>4?args[4]:"", args.length>5?args[5]:"");
     }
 
     /**
