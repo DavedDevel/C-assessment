@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface ContactBookResource {
 
-    List<Contact> getContactBookResource();
+    List<Contact> getContactBookResource(String resource);
 
 }

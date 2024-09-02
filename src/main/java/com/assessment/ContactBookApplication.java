@@ -12,7 +12,7 @@ class ContactBookApplication {
     public static void main(String... args){
 
         ContactBookManagement contactBookManagement = new ContactBookManagement(new ContactBookFromCsv(), new DistanceStrategy());
-        var list = contactBookManagement.findPotentialDuplication();
+        var list = contactBookManagement.findPotentialDuplication("sampleCode.csv");
         OutputTemplate outputTemplate = new OutputPrinter();
         outputTemplate.outputStream(list);
 

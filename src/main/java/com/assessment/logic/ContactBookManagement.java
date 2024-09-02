@@ -25,8 +25,8 @@ public class ContactBookManagement {
     /**
      * This method returns potential duplicated contacts in a book.
      */
-    public List<Triple<String, String, Accuracy>> findPotentialDuplication() {
-        var contactBookList = contactBookResource.getContactBookResource();
+    public List<Triple<String, String, Accuracy>> findPotentialDuplication(String sample) {
+        var contactBookList = contactBookResource.getContactBookResource(sample);
         for (int i= 0; i < contactBookList.size(); i++) {
             for (int j= i+1; j < contactBookList.size(); j++) {
                 var a = contactBookList.get(i);
